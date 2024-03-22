@@ -178,8 +178,20 @@ void test06()
 void test07()
 {
 	char buf[100];
-	printf("문자열을 입력하세요 : "); scanf("%s", buf);
-	printf("입력한 문자열의 길이는   [ %d ] 입니다.\n\n", Length(buf));
+	int n, m;
+	while (1)
+	{
+		//printf("문자열을 입력하세요 : "); scanf("%s", buf);
+		//printf("입력한 문자열의 길이는   [ %d ] 입니다.\n\n", Length(buf));
+		printf("홀수를 입력하세요 : "); m = scanf("%d", &n);
+		if (m == 0) // 입력오류
+		{
+			fflush(stdin); // 버퍼 클리어
+			rewind(stdin); // 버퍼 포인터 초기화
+			continue;
+		}
+		printf("입력한 숫자는  [ %d ] 입니다.\n\n", n);
+	}
 }
 void Copy(char* p1, char* p2)
 {
