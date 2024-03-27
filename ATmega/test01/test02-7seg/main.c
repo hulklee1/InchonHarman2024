@@ -67,7 +67,7 @@ int main(void)
 {
 	unsigned long j = 0;
 	//int i, j = 0;
-	DDRD = 0x07;
+	//DDRD = 0x07;
 	DDRA = 0xFF; // 세그먼트 제어 핀 8개를 출력으로 설정
 	DDRB = 0x0F; // 자릿수 선택 핀 4개를 출력으로 설정
 	while(1)

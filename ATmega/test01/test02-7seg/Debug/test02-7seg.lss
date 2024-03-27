@@ -3,31 +3,31 @@ test02-7seg.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000010  00800100  000001da  0000026e  2**0
+  0 .data         00000010  00800100  000001d6  0000026a  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         000001da  00000000  00000000  00000094  2**1
+  1 .text         000001d6  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000005  00800110  00800110  0000027e  2**0
+  2 .bss          00000005  00800110  00800110  0000027a  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  0000027e  2**0
+  3 .comment      00000030  00000000  00000000  0000027a  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002b0  2**2
+  4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000002ac  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000048  00000000  00000000  000002ec  2**0
+  5 .debug_aranges 00000048  00000000  00000000  000002e8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000bf6  00000000  00000000  00000334  2**0
+  6 .debug_info   00000bf6  00000000  00000000  00000330  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000932  00000000  00000000  00000f2a  2**0
+  7 .debug_abbrev 00000932  00000000  00000000  00000f26  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000003c3  00000000  00000000  0000185c  2**0
+  8 .debug_line   000003bd  00000000  00000000  00001858  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  0000009c  00000000  00000000  00001c20  2**2
+  9 .debug_frame  0000009c  00000000  00000000  00001c18  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000448  00000000  00000000  00001cbc  2**0
+ 10 .debug_str    00000448  00000000  00000000  00001cb4  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000409  00000000  00000000  00002104  2**0
+ 11 .debug_loc    00000409  00000000  00000000  000020fc  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000038  00000000  00000000  0000250d  2**0
+ 12 .debug_ranges 00000038  00000000  00000000  00002505  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -116,7 +116,7 @@ Disassembly of section .text:
   98:	11 e0       	ldi	r17, 0x01	; 1
   9a:	a0 e0       	ldi	r26, 0x00	; 0
   9c:	b1 e0       	ldi	r27, 0x01	; 1
-  9e:	ea ed       	ldi	r30, 0xDA	; 218
+  9e:	e6 ed       	ldi	r30, 0xD6	; 214
   a0:	f1 e0       	ldi	r31, 0x01	; 1
   a2:	00 e0       	ldi	r16, 0x00	; 0
   a4:	0b bf       	out	0x3b, r16	; 59
@@ -141,7 +141,7 @@ Disassembly of section .text:
   be:	b2 07       	cpc	r27, r18
   c0:	e1 f7       	brne	.-8      	; 0xba <.do_clear_bss_loop>
   c2:	70 d0       	rcall	.+224    	; 0x1a4 <main>
-  c4:	88 c0       	rjmp	.+272    	; 0x1d6 <_exit>
+  c4:	86 c0       	rjmp	.+268    	; 0x1d2 <_exit>
 
 000000c6 <__bad_interrupt>:
   c6:	9c cf       	rjmp	.-200    	; 0x0 <__vectors>
@@ -315,49 +315,47 @@ int main(void)
 {
 	unsigned long j = 0;
 	//int i, j = 0;
-	DDRD = 0x07;
- 1a4:	87 e0       	ldi	r24, 0x07	; 7
- 1a6:	81 bb       	out	0x11, r24	; 17
+	//DDRD = 0x07;
 	DDRA = 0xFF; // 세그먼트 제어 핀 8개를 출력으로 설정
- 1a8:	8f ef       	ldi	r24, 0xFF	; 255
- 1aa:	8a bb       	out	0x1a, r24	; 26
+ 1a4:	8f ef       	ldi	r24, 0xFF	; 255
+ 1a6:	8a bb       	out	0x1a, r24	; 26
 	DDRB = 0x0F; // 자릿수 선택 핀 4개를 출력으로 설정
- 1ac:	8f e0       	ldi	r24, 0x0F	; 15
- 1ae:	87 bb       	out	0x17, r24	; 23
+ 1a8:	8f e0       	ldi	r24, 0x0F	; 15
+ 1aa:	87 bb       	out	0x17, r24	; 23
 	//FND_4(arr);
 	return arr;
 }
 int main(void)
 {
 	unsigned long j = 0;
- 1b0:	60 e0       	ldi	r22, 0x00	; 0
- 1b2:	70 e0       	ldi	r23, 0x00	; 0
- 1b4:	cb 01       	movw	r24, r22
+ 1ac:	60 e0       	ldi	r22, 0x00	; 0
+ 1ae:	70 e0       	ldi	r23, 0x00	; 0
+ 1b0:	cb 01       	movw	r24, r22
 	DDRB = 0x0F; // 자릿수 선택 핀 4개를 출력으로 설정
 	while(1)
 	{
 		//TogglePinA(2,__delay_t); // PortA의 0번째 비트를 점멸
 		//LED(&PORTD, 1); // PortD의 0번째 비트를 점멸
 		FND_4(Trans(j++));
- 1b6:	6b 01       	movw	r12, r22
- 1b8:	7c 01       	movw	r14, r24
- 1ba:	2f ef       	ldi	r18, 0xFF	; 255
- 1bc:	c2 1a       	sub	r12, r18
- 1be:	d2 0a       	sbc	r13, r18
- 1c0:	e2 0a       	sbc	r14, r18
- 1c2:	f2 0a       	sbc	r15, r18
- 1c4:	b0 df       	rcall	.-160    	; 0x126 <Trans>
- 1c6:	98 df       	rcall	.-208    	; 0xf8 <FND_4>
- 1c8:	85 e0       	ldi	r24, 0x05	; 5
- 1ca:	8a 95       	dec	r24
- 1cc:	f1 f7       	brne	.-4      	; 0x1ca <main+0x26>
- 1ce:	00 00       	nop
- 1d0:	c7 01       	movw	r24, r14
- 1d2:	b6 01       	movw	r22, r12
- 1d4:	f0 cf       	rjmp	.-32     	; 0x1b6 <main+0x12>
+ 1b2:	6b 01       	movw	r12, r22
+ 1b4:	7c 01       	movw	r14, r24
+ 1b6:	2f ef       	ldi	r18, 0xFF	; 255
+ 1b8:	c2 1a       	sub	r12, r18
+ 1ba:	d2 0a       	sbc	r13, r18
+ 1bc:	e2 0a       	sbc	r14, r18
+ 1be:	f2 0a       	sbc	r15, r18
+ 1c0:	b2 df       	rcall	.-156    	; 0x126 <Trans>
+ 1c2:	9a df       	rcall	.-204    	; 0xf8 <FND_4>
+ 1c4:	85 e0       	ldi	r24, 0x05	; 5
+ 1c6:	8a 95       	dec	r24
+ 1c8:	f1 f7       	brne	.-4      	; 0x1c6 <main+0x22>
+ 1ca:	00 00       	nop
+ 1cc:	c7 01       	movw	r24, r14
+ 1ce:	b6 01       	movw	r22, r12
+ 1d0:	f0 cf       	rjmp	.-32     	; 0x1b2 <main+0xe>
 
-000001d6 <_exit>:
- 1d6:	f8 94       	cli
+000001d2 <_exit>:
+ 1d2:	f8 94       	cli
 
-000001d8 <__stop_program>:
- 1d8:	ff cf       	rjmp	.-2      	; 0x1d8 <__stop_program>
+000001d4 <__stop_program>:
+ 1d4:	ff cf       	rjmp	.-2      	; 0x1d4 <__stop_program>
