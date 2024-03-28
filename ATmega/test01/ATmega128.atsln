@@ -9,6 +9,8 @@ Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test02-7seg", "test02-7seg\
 EndProject
 Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test03-intr", "test03-intr\test03-intr.cproj", "{CDD1BE17-653E-41DB-BCF8-011A4001CC42}"
 EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "test04-Timer", "test04-Timer\test04-Timer.cproj", "{219BFD38-3D04-4120-8F19-4F328B641C38}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|AVR = Debug|AVR
@@ -27,6 +29,10 @@ Global
 		{CDD1BE17-653E-41DB-BCF8-011A4001CC42}.Debug|AVR.Build.0 = Debug|AVR
 		{CDD1BE17-653E-41DB-BCF8-011A4001CC42}.Release|AVR.ActiveCfg = Release|AVR
 		{CDD1BE17-653E-41DB-BCF8-011A4001CC42}.Release|AVR.Build.0 = Release|AVR
+		{219BFD38-3D04-4120-8F19-4F328B641C38}.Debug|AVR.ActiveCfg = Debug|AVR
+		{219BFD38-3D04-4120-8F19-4F328B641C38}.Debug|AVR.Build.0 = Debug|AVR
+		{219BFD38-3D04-4120-8F19-4F328B641C38}.Release|AVR.ActiveCfg = Release|AVR
+		{219BFD38-3D04-4120-8F19-4F328B641C38}.Release|AVR.Build.0 = Release|AVR
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

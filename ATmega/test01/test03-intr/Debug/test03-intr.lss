@@ -13,21 +13,21 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY
   4 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  00000410  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000050  00000000  00000000  0000044c  2**0
+  5 .debug_aranges 00000068  00000000  00000000  0000044c  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00000bcf  00000000  00000000  0000049c  2**0
+  6 .debug_info   00000c92  00000000  00000000  000004b4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000008f0  00000000  00000000  0000106b  2**0
+  7 .debug_abbrev 000009da  00000000  00000000  00001146  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   0000045a  00000000  00000000  0000195b  2**0
+  8 .debug_line   0000054d  00000000  00000000  00001b20  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000000ec  00000000  00000000  00001db8  2**2
+  9 .debug_frame  00000100  00000000  00000000  00002070  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    0000045a  00000000  00000000  00001ea4  2**0
+ 10 .debug_str    00000469  00000000  00000000  00002170  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000439  00000000  00000000  000022fe  2**0
+ 11 .debug_loc    00000433  00000000  00000000  000025d9  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000040  00000000  00000000  00002737  2**0
+ 12 .debug_ranges 00000048  00000000  00000000  00002a0c  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -147,8 +147,8 @@ Disassembly of section .text:
   c6:	9c cf       	rjmp	.-200    	; 0x0 <__vectors>
 
 000000c8 <seg>:
+uint8_t digit[] = {0x3F, 0X06, 0x5B, 0x4F, 0x66, 0x6D, 0x7D, 0x27, 0x7F, 0x67, 0x77, 0x7c, 0x58, 0x5e, 0x79, 0x71 };
 char arr[5]; // 세그먼트 이미지 정보를 담을 안전 영역
-volatile int opmode = 0, state = 0;	// 최적화 금지
 
 void seg(int sel, uint8_t c)
 {
@@ -434,8 +434,8 @@ char* Disp(unsigned long num)  // 10진 정수 ==> 16진수 문자열 : 56506 ==
  252:	c7 01       	movw	r24, r14
  254:	b6 01       	movw	r22, r12
  256:	6d df       	rcall	.-294    	; 0x132 <Disp>
- 258:	8f e5       	ldi	r24, 0x5F	; 95
- 25a:	9a ee       	ldi	r25, 0xEA	; 234
+ 258:	85 ea       	ldi	r24, 0xA5	; 165
+ 25a:	9e e0       	ldi	r25, 0x0E	; 14
  25c:	01 97       	sbiw	r24, 0x01	; 1
  25e:	f1 f7       	brne	.-4      	; 0x25c <main+0x4a>
  260:	00 c0       	rjmp	.+0      	; 0x262 <main+0x50>
@@ -445,8 +445,8 @@ char* Disp(unsigned long num)  // 10진 정수 ==> 16진수 문자열 : 56506 ==
  264:	c7 01       	movw	r24, r14
  266:	b6 01       	movw	r22, r12
  268:	64 df       	rcall	.-312    	; 0x132 <Disp>
- 26a:	8f e5       	ldi	r24, 0x5F	; 95
- 26c:	9a ee       	ldi	r25, 0xEA	; 234
+ 26a:	85 ea       	ldi	r24, 0xA5	; 165
+ 26c:	9e e0       	ldi	r25, 0x0E	; 14
  26e:	01 97       	sbiw	r24, 0x01	; 1
  270:	f1 f7       	brne	.-4      	; 0x26e <main+0x5c>
  272:	00 c0       	rjmp	.+0      	; 0x274 <main+0x62>
@@ -456,8 +456,8 @@ char* Disp(unsigned long num)  // 10진 정수 ==> 16진수 문자열 : 56506 ==
  276:	c7 01       	movw	r24, r14
  278:	b6 01       	movw	r22, r12
  27a:	5b df       	rcall	.-330    	; 0x132 <Disp>
- 27c:	8f e5       	ldi	r24, 0x5F	; 95
- 27e:	9a ee       	ldi	r25, 0xEA	; 234
+ 27c:	85 ea       	ldi	r24, 0xA5	; 165
+ 27e:	9e e0       	ldi	r25, 0x0E	; 14
  280:	01 97       	sbiw	r24, 0x01	; 1
  282:	f1 f7       	brne	.-4      	; 0x280 <main+0x6e>
  284:	00 c0       	rjmp	.+0      	; 0x286 <main+0x74>
@@ -467,8 +467,8 @@ char* Disp(unsigned long num)  // 10진 정수 ==> 16진수 문자열 : 56506 ==
  288:	c7 01       	movw	r24, r14
  28a:	b6 01       	movw	r22, r12
  28c:	52 df       	rcall	.-348    	; 0x132 <Disp>
- 28e:	8f e1       	ldi	r24, 0x1F	; 31
- 290:	9b ec       	ldi	r25, 0xCB	; 203
+ 28e:	81 eb       	ldi	r24, 0xB1	; 177
+ 290:	9c e0       	ldi	r25, 0x0C	; 12
  292:	01 97       	sbiw	r24, 0x01	; 1
  294:	f1 f7       	brne	.-4      	; 0x292 <main+0x80>
  296:	00 c0       	rjmp	.+0      	; 0x298 <main+0x86>
