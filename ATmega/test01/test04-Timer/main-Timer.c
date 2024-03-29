@@ -19,13 +19,15 @@ int main(void)
 	DDRA = 0xFF; // 세그먼트 제어 핀 8개를 출력으로 설정
 	DDRB = 0x0F; // 자릿수 선택 핀 4개를 출력으로 설정
 	SegPort(&PORTA, &PORTB);
+	SegType(0);
 
 //	TIMSK |= 0x01;  // 0000 0001b - Timer 0 TCNT overflow interrupt
-	TIMSK |= 0x04;  // 0000 0100b - Timer 1 TCNT overflow interrupt (16bit)
-//	TIMSK |= 0x40;  // 0100 0001b - Timer 2 TCNT overflow interrupt
-//	TCCR0 = 0x04;	// 분주비 (Pre-Scaler) 64
-	TCCR1B = 0x04;	// 분주비 (Pre-Scaler) 64
-//	TCCR2 = 0x04;	// 분주비 (Pre-Scaler) 64
+	//TIMSK |= 0x04;  // 0000 0100b - Timer 1 TCNT overflow interrupt (16bit)
+	TIMSK |= 0x40;  // 0100 0001b - Timer 2 TCNT overflow interrupt
+	//ETIMSK |= 0x04;  // 0000 0100b - Timer 3 TCNT overflow interrupt (16bit)
+	TCCR0 = 0x04;	// 분주비 (Pre-Scaler) 64
+	//TCCR1B = 0x04;	// 분주비 (Pre-Scaler) 64
+	TCCR2 = 0b00000111;	// 분주비 (Pre-Scaler) 64
 	SREG |= 0x80;
 	sei();
     while (1) 
@@ -34,10 +36,10 @@ int main(void)
 		SegDisp(cnt);
     }
 }
-ISR(TIMER1_OVF_vect)
+ISR(TIMER2_OVF_vect)
 {
 	tcnt++;
-	//if(tcnt >= 100)  // 8bit timer 사용시
+	//if(tcnt >= 500)  // 8bit timer 사용시
 	{
 		cnt++; tcnt = 0;
 	}
