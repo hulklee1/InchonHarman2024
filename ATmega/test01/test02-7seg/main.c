@@ -35,7 +35,8 @@ void LED(char *p,  int n)  // p : PORTx의 포인터, n : n 번째 비트
 void seg(int sel, uint8_t c)
 {	
 	PORTB |= 0X0F;
-	PORTB &= ~(1 << (3-sel));
+//	PORTB &= ~(1 << (3-sel));
+	PORTB |= 1 << (3-sel);
 	PORTA = c;		// 숫자 데이터 출력
 	_delay_us(1);	// 0.01 초 간격으로 전환
 }
@@ -75,7 +76,7 @@ int main(void)
 		//TogglePinA(2,__delay_t); // PortA의 0번째 비트를 점멸
 		//LED(&PORTD, 1); // PortD의 0번째 비트를 점멸
 		FND_4(Trans(j++));
-		_delay_us(1);
+		_delay_us(10);
 		//for(i = 0; i < 4; i++)
 		//{
 			//// 해당 자리에만 O(GND)을 출력하고 나머지에는 1을 출력하여 자리 선택
